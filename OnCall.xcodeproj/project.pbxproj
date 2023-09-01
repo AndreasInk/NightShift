@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1519AAF2A9999F100AE76F8 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1519AAE2A9999F100AE76F8 /* ScheduleView.swift */; };
+		E1519AB12A999B6500AE76F8 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1519AB02A999B6500AE76F8 /* Color+Ext.swift */; };
+		E1519AB32A99A89400AE76F8 /* EditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1519AB22A99A89400AE76F8 /* EditScheduleView.swift */; };
 		E155FE442A9597820002D5EB /* OnCallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155FE432A9597820002D5EB /* OnCallApp.swift */; };
 		E155FE462A9597820002D5EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155FE452A9597820002D5EB /* ContentView.swift */; };
 		E155FE482A9597830002D5EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E155FE472A9597830002D5EB /* Assets.xcassets */; };
@@ -16,6 +19,10 @@
 		E155FE582A9597830002D5EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155FE572A9597830002D5EB /* ContentView.swift */; };
 		E155FE5A2A9597850002D5EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E155FE592A9597850002D5EB /* Assets.xcassets */; };
 		E155FE5D2A9597850002D5EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E155FE5C2A9597850002D5EB /* Preview Assets.xcassets */; };
+		E155FE682A959A7A0002D5EB /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155FE672A959A7A0002D5EB /* SleepManager.swift */; };
+		E16987182AA190F8009BBB34 /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16987172AA190F8009BBB34 /* UserDefault+Ext.swift */; };
+		E19A7A342AA2A456008246B7 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19A7A332AA2A456008246B7 /* Schedule.swift */; };
+		E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +50,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1519AAE2A9999F100AE76F8 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		E1519AB02A999B6500AE76F8 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		E1519AB22A99A89400AE76F8 /* EditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleView.swift; sourceTree = "<group>"; };
 		E155FE402A9597820002D5EB /* OnCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E155FE432A9597820002D5EB /* OnCallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCallApp.swift; sourceTree = "<group>"; };
 		E155FE452A9597820002D5EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +63,13 @@
 		E155FE572A9597830002D5EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E155FE592A9597850002D5EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E155FE5C2A9597850002D5EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E155FE672A959A7A0002D5EB /* SleepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManager.swift; sourceTree = "<group>"; };
+		E16987162AA18EF4009BBB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E16987172AA190F8009BBB34 /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
+		E191B7882A96BEA80092950C /* OnCall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnCall.entitlements; sourceTree = "<group>"; };
+		E191B78A2A96BF4C0092950C /* OnCall Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OnCall Watch App.entitlements"; sourceTree = "<group>"; };
+		E19A7A332AA2A456008246B7 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +111,13 @@
 		E155FE422A9597820002D5EB /* OnCall */ = {
 			isa = PBXGroup;
 			children = (
+				E16987162AA18EF4009BBB34 /* Info.plist */,
+				E191B7882A96BEA80092950C /* OnCall.entitlements */,
 				E155FE432A9597820002D5EB /* OnCallApp.swift */,
 				E155FE452A9597820002D5EB /* ContentView.swift */,
+				E19A7A372AA2A472008246B7 /* Views */,
+				E19A7A362AA2A46B008246B7 /* Models */,
+				E19A7A352AA2A464008246B7 /* Extensions */,
 				E155FE472A9597830002D5EB /* Assets.xcassets */,
 				E155FE492A9597830002D5EB /* Preview Content */,
 			);
@@ -113,6 +135,7 @@
 		E155FE542A9597830002D5EB /* OnCall Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				E191B78A2A96BF4C0092950C /* OnCall Watch App.entitlements */,
 				E155FE552A9597830002D5EB /* OnCallApp.swift */,
 				E155FE572A9597830002D5EB /* ContentView.swift */,
 				E155FE592A9597850002D5EB /* Assets.xcassets */,
@@ -127,6 +150,42 @@
 				E155FE5C2A9597850002D5EB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E19A7A352AA2A464008246B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E16987172AA190F8009BBB34 /* UserDefault+Ext.swift */,
+				E1519AB02A999B6500AE76F8 /* Color+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E19A7A362AA2A46B008246B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E19A7A332AA2A456008246B7 /* Schedule.swift */,
+				E19A7A382AA2A480008246B7 /* Managers */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E19A7A372AA2A472008246B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */,
+				E1519AAE2A9999F100AE76F8 /* ScheduleView.swift */,
+				E1519AB22A99A89400AE76F8 /* EditScheduleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E19A7A382AA2A480008246B7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E155FE672A959A7A0002D5EB /* SleepManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16987182AA190F8009BBB34 /* UserDefault+Ext.swift in Sources */,
+				E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */,
 				E155FE462A9597820002D5EB /* ContentView.swift in Sources */,
+				E19A7A342AA2A456008246B7 /* Schedule.swift in Sources */,
+				E1519AAF2A9999F100AE76F8 /* ScheduleView.swift in Sources */,
+				E155FE682A959A7A0002D5EB /* SleepManager.swift in Sources */,
 				E155FE442A9597820002D5EB /* OnCallApp.swift in Sources */,
+				E1519AB12A999B6500AE76F8 /* Color+Ext.swift in Sources */,
+				E1519AB32A99A89400AE76F8 /* EditScheduleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "OnCall Watch App/OnCall Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnCall Watch App/Preview Content\"";
@@ -382,6 +449,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = OnCall;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To check sleep stages";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Ai.OnCall;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "OnCall Watch App/OnCall Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnCall Watch App/Preview Content\"";
@@ -412,6 +481,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = OnCall;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To check sleep stages";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Ai.OnCall;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -437,13 +507,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnCall/OnCall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnCall/Preview Content\"";
 				DEVELOPMENT_TEAM = 9NG3C5HP77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = OnCall;
+				INFOPLIST_FILE = OnCall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NightShift;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To check sleep stages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -458,6 +531,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ai.OnCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,13 +546,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnCall/OnCall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnCall/Preview Content\"";
 				DEVELOPMENT_TEAM = 9NG3C5HP77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = OnCall;
+				INFOPLIST_FILE = OnCall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NightShift;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To check sleep stages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -491,6 +570,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ai.OnCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
