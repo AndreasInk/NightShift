@@ -82,7 +82,6 @@ struct ScheduleCellView: View {
                     expand.toggle()
                 }
             }
-            
             .padding()
             if expand {
                 HStack {

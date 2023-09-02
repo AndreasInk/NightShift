@@ -10,7 +10,7 @@ import HealthKit
 
 class HealthManager {
     let healthStore = HKHealthStore()
-    
+
     func requestPermission() async throws {
         let quantityTypes: [HKQuantityTypeIdentifier] = [
             .heartRate,

@@ -106,7 +106,6 @@ struct EditProfileView: View {
                 }
             Button("Save") {
                 dismiss()
-                
             }
             .buttonStyle(.bordered)
             .tint(.accentColor)
