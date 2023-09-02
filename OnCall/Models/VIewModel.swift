@@ -11,12 +11,14 @@ class ViewModel: ObservableObject {
     typealias Constants = NightShiftConstants
     private let backendSync = BackendSyncManager()
     private let keychain = KeychainWrapper(serviceName: Constants.keychainServiceName)
+
     private let health = HealthManager()
     @AppStorage(Constants.isBackendSyncOn) var isBackendSyncOn = true
     @AppStorage(Constants.isFirstLoad) var isFirstLoad = true
     @AppStorage(Constants.userID) var userID = UUID().uuidString
     
     @AppStorage(Constants.username) var username = ""
+
 
     @Published var schedules: [CodableSchedule] = []
     @Published var profile: PersonCodable = .init()

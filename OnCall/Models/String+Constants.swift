@@ -10,6 +10,7 @@ import SwiftUI
 struct NightShiftConstants {
     static let bearer = "bearer"
     static let isFirstLoad = "isFirstLoad"
+
     static let isBackendSyncOn = "isBackendSyncOn2"
     static let userID = "userID"
     static let username = "username"

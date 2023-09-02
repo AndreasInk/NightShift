@@ -30,6 +30,7 @@ class BackendSyncManager {
         let session = URLSession.shared
         var request = URLRequest(url: URL(string: baseURL + "save_schedule")!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         request.setValue("Bearer " + token, forHTTPHeaderField: "Authentication")
         let data = try await session.upload(for: request, from: encoder.encode(schedule)).0
         print(String(data: data, encoding: .utf8))
@@ -38,7 +39,9 @@ class BackendSyncManager {
     func getProfile(token: String, userID: String) async throws -> PersonCodable {
         let session = URLSession.shared
         var request = URLRequest(url: URL(string: baseURL + "get_schedule")!)
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         request.setValue("Bearer " + token, forHTTPHeaderField: "Authentication")
         let data = try await session.data(for: request)
         return try decoder.decode(PersonCodable.self, from: data.0)
@@ -48,10 +51,12 @@ class BackendSyncManager {
         let session = URLSession.shared
         var request = URLRequest(url: URL(string: baseURL + "save_schedule")!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         request.setValue("Bearer " + token, forHTTPHeaderField: "Authentication")
         let data = try await session.upload(for: request, from: encoder.encode(profile)).0
         print(String(data: data, encoding: .utf8))
     }
+
     
     enum NetworkError: Error {
         case badURL, requestFailed, unknown
@@ -91,4 +96,5 @@ struct TokenResponse: Codable {
 struct User: Codable {
     var username: String
     var password: String
+
 }
