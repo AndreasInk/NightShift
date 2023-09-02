@@ -9,7 +9,7 @@ import SwiftUI
 import HealthKit
 
 class HealthManager {
-    let healthStore = HKHealthStore()
+    private let healthStore = HKHealthStore()
 
     func requestPermission() async throws {
         let quantityTypes: [HKQuantityTypeIdentifier] = [
@@ -52,30 +52,39 @@ class HealthManager {
         let decibelSamples = try await queryHealthData(typeIdentifier: .environmentalAudioExposure, from: startDate, to: endDate)
 
         // Define the sleep analysis type
-      
-
-        // Create the predicate for the date range
-      
-        let anchorDescriptor =
-        HKAnchoredObjectQueryDescriptor(
-            predicates: [.categorySample(type: .init(.sleepAnalysis))],
-                anchor: nil)
-        
-        
-        let results = try await anchorDescriptor.result(for: healthStore)
-        
-        let sleepSamples = results.addedSamples
-
-        // Map sleep samples and other health metrics to the SleepData struct
-        let sleepData = sleepSamples.map { sample in
-            SleepData(
+        var sleepData = [SleepData]()
+        for sample in heartRateSamples {
+            sleepData.append(SleepData(
                 date: sample.startDate,
-                bloodOxygen: valueForDate(bloodOxygenSamples, date: sample.startDate, unit: .percent()), // Example mapping function
-                heartRate: valueForDate(heartRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())), // Example mapping function
-                respirationRate: valueForDate(respirationRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())), // Example mapping function
-                decibels: valueForDate(decibelSamples, date: sample.startDate, unit: .decibelHearingLevel())
+                bloodOxygen: valueForDate(bloodOxygenSamples, date: sample.startDate, unit: .percent()),
+                heartRate: valueForDate(heartRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())),
+                respirationRate: valueForDate(respirationRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())),
+                decibels: valueForDate(decibelSamples, date: sample.startDate, unit: .decibelHearingLevel()))
             )
         }
+        
+        // Create the predicate for the date range
+      
+//        let anchorDescriptor =
+//        HKAnchoredObjectQueryDescriptor(
+//            predicates: [.categorySample(type: .init(.sleepAnalysis))],
+//                anchor: nil)
+//        
+//        
+//        let results = try await anchorDescriptor.result(for: healthStore)
+//        
+//        let sleepSamples = results.addedSamples
+//
+//        // Map sleep samples and other health metrics to the SleepData struct
+//        let sleepData = sleepSamples.map { sample in
+//            SleepData(
+//                date: sample.startDate,
+//                bloodOxygen: valueForDate(bloodOxygenSamples, date: sample.startDate, unit: .percent()), // Example mapping function
+//                heartRate: valueForDate(heartRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())), // Example mapping function
+//                respirationRate: valueForDate(respirationRateSamples, date: sample.startDate, unit: .count().unitDivided(by: .minute())), // Example mapping function
+//                decibels: valueForDate(decibelSamples, date: sample.startDate, unit: .decibelHearingLevel())
+//            )
+//        }
 
         return sleepData
     }
@@ -98,13 +107,7 @@ class HealthManager {
     }
 
 }
-struct SleepData {
-    var date: Date
-    var bloodOxygen: Double
-    var heartRate: Double
-    var respirationRate: Double
-    var decibels: Double
-}
+
 struct CustomError: Error {
     static let invalidType = CustomError()
 }

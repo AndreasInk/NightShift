@@ -26,6 +26,7 @@
 		E1C480FA2AA390F100575C3F /* VIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480F92AA390F100575C3F /* VIewModel.swift */; };
 		E1C480FC2AA3923C00575C3F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480FB2AA3923C00575C3F /* KeychainWrapper.swift */; };
 		E1C481002AA392D500575C3F /* String+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480FF2AA392D500575C3F /* String+Constants.swift */; };
+		E1C481022AA3B6D900575C3F /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C481012AA3B6D900575C3F /* View+Ext.swift */; };
 		E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		E1C480F92AA390F100575C3F /* VIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewModel.swift; sourceTree = "<group>"; };
 		E1C480FB2AA3923C00575C3F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		E1C480FF2AA392D500575C3F /* String+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Constants.swift"; sourceTree = "<group>"; };
+		E1C481012AA3B6D900575C3F /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,12 +100,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10B21A42AA3D63400FC4E72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E155FE372A9597810002D5EB = {
 			isa = PBXGroup;
 			children = (
 				E155FE422A9597820002D5EB /* OnCall */,
 				E155FE542A9597830002D5EB /* OnCall Watch App */,
 				E155FE412A9597820002D5EB /* Products */,
+				E10B21A42AA3D63400FC4E72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E16987172AA190F8009BBB34 /* UserDefault+Ext.swift */,
+				E1C481012AA3B6D900575C3F /* View+Ext.swift */,
 				E1519AB02A999B6500AE76F8 /* Color+Ext.swift */,
 			);
 			path = Extensions;
@@ -218,6 +229,8 @@
 				E155FE532A9597830002D5EB /* PBXTargetDependency */,
 			);
 			name = OnCall;
+			packageProductDependencies = (
+			);
 			productName = OnCall;
 			productReference = E155FE402A9597820002D5EB /* OnCall.app */;
 			productType = "com.apple.product-type.application";
@@ -266,6 +279,8 @@
 				Base,
 			);
 			mainGroup = E155FE372A9597810002D5EB;
+			packageReferences = (
+			);
 			productRefGroup = E155FE412A9597820002D5EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C481022AA3B6D900575C3F /* View+Ext.swift in Sources */,
 				E16987182AA190F8009BBB34 /* UserDefault+Ext.swift in Sources */,
 				E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */,
 				E155FE462A9597820002D5EB /* ContentView.swift in Sources */,
