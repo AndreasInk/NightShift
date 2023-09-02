@@ -49,7 +49,7 @@ struct UserDefault<T: Codable> {
                         try json.write(to: url, atomically: false, encoding: String.Encoding.utf8)
 
                     } catch {
-                        print("erorr")
+                        print("error")
                     }
                 }
             }

@@ -13,6 +13,7 @@ import SwiftData
 
 @main
 struct OnCallApp: App {
+    @StateObject var viewModel = ViewModel()
     @Environment(\.scenePhase) var scenePhase
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -33,5 +34,6 @@ struct OnCallApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(viewModel)
     }
 }

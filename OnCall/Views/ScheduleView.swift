@@ -12,7 +12,7 @@ struct ScheduleView: View {
     @State var editProfile = false
     @Query var schedules: [Schedule]
     var schedule: Schedule = Schedule(id: UUID().uuidString, name: "", startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 4), autoPick: true, style: .demo)
-
+    @EnvironmentObject var viewModel: ViewModel
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
@@ -25,11 +25,7 @@ struct ScheduleView: View {
                                 .font(.headline)
                                 .foregroundStyle(.white)
                                 .padding()
-                                .scrollTransition { effect, phase in
-                                    effect
-                                        .blur(radius: phase.isIdentity ? 0 : 10)
-                                        .opacity(phase.isIdentity ? 1 : 0)
-                                }
+                                .fancyScroll()
                         }
                         .sheet(isPresented: $addSchedule) {
                             EditScheduleView(schedule: schedule)
@@ -41,11 +37,7 @@ struct ScheduleView: View {
                                 .font(.headline)
                                 .foregroundStyle(.white)
                                 .padding()
-                                .scrollTransition { effect, phase in
-                                    effect
-                                        .blur(radius: phase.isIdentity ? 0 : 10)
-                                        .opacity(phase.isIdentity ? 1 : 0)
-                                }
+                                .fancyScroll()
                         }
                         .sheet(isPresented: $editProfile) {
                             EditProfileView()
@@ -62,6 +54,9 @@ struct ScheduleView: View {
             }
             .scrollClipDisabled()
         }
+        .onAppear {
+            viewModel.syncWithBackend()
+        }
         
     }
 }
@@ -70,13 +65,14 @@ struct ScheduleCellView: View {
     @State var showEdit = false
     var schedule: Schedule
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 PeopleGridView(people: schedule.peopleOnShift ?? [])
                 Text(schedule.name ?? "None")
                     .foregroundStyle(.white)
                 Spacer()
             }
+            .contentShape(Rectangle())
             .onTapGesture {
                 withAnimation(.bouncy) {
                     expand.toggle()
@@ -108,9 +104,10 @@ struct ScheduleCellView: View {
         .background {
             ZStack {
                 VStack {
-                    ForEach(0...14, id: \.self) { _ in
+                    let isiPad = UIDevice.current.model.lowercased().contains("pad")
+                    ForEach(0...10, id: \.self) { _ in
                         HStack {
-                            ForEach(0...14, id: \.self) { _ in
+                            ForEach(0...(isiPad ? 40 : 10), id: \.self) { _ in
                                 Text(schedule.style?.emoji ?? "👀")
                                     .opacity(0.15)
                                     .fixedSize()
@@ -156,6 +153,7 @@ struct PeopleGridView: View {
                     }
             }
         }
+        .frame(width: 50)
     }
 }
 

@@ -48,19 +48,31 @@ struct ScheduleStyle: Codable {
 
 
 struct PersonCodable: Codable {
-    init(name: String? = nil, color: CodableColor? = nil, imageData: Data? = nil, emoji: String? = nil) {
+    init(name: String? = nil, color: CodableColor? = nil, imageData: Data? = nil, emoji: String? = nil, userID: String? = nil, pushToken: String? = nil) {
         self.name = name
         self.color = color
         self.imageData = imageData
         self.emoji = emoji
+        self.userID = userID
+        self.pushToken = pushToken
     }
     var name: String?
     var color: CodableColor?
     var imageData: Data?
     var emoji: String?
+    var userID: String?
+    var pushToken: String?
+    var sleepData: [SleepData]?
     var image: Image {
         Image(uiImage: UIImage(data: imageData ?? Data()) ?? UIImage.add)
     }
+}
+struct SleepData: Codable {
+    var date: Date
+    var bloodOxygen: Double
+    var heartRate: Double
+    var respirationRate: Double
+    var decibels: Double
 }
 
 @Model

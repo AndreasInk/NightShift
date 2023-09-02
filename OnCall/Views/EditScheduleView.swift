@@ -11,7 +11,7 @@ import SwiftData
 struct EditScheduleView: View {
     @Environment(\.modelContext) var model
     @Environment(\.dismiss) var dismiss
-    var schedule: Schedule
+    @State var schedule: Schedule
     @State var color = Color.black
     @State var name = ""
     @State var emoji = ""
@@ -26,30 +26,21 @@ struct EditScheduleView: View {
 
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(schedule.peopleOnShift ?? [], id: \.name) { person in
-                        Button {
-                            if let firstIndex = peopleOnShift.map(\.name).firstIndex(of: person.name) {
-                                peopleOnShift.remove(at: firstIndex)
-                            }
-                        } label: {
-                            person.image
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                        }
-                        
-                    }
+                    
                     ForEach(people) { person in
-                        if schedule.peopleOnShift?.map(\.name).firstIndex(of: person.person.name) == nil {
-                            Button {
-                                peopleOnShift.append(person.person)
-                            } label: {
+                        let isIn = peopleOnShift.map(\.userID).contains(person.person.userID)
+                        Button {
+                            peopleOnShift.append(person.person)
+                        } label: {
+                            VStack {
                                 person.image
                                     .resizable()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 15))
-                                    .opacity(0.4)
+                                Text(person.name ?? "No Name")
                             }
+                            .opacity(isIn ? 1 : 0.4)
+                            .scaleEffect(isIn ? 1 : 0.6)
                         }
                     }
                 }
