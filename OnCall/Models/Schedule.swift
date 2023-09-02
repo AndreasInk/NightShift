@@ -30,6 +30,16 @@ class Schedule {
     var style: ScheduleStyle?
     
 }
+struct CodableSchedule: Codable {
+    var id: String?
+    var name: String?
+    
+    var peopleOnShift: [PersonCodable]?
+    var startDate: Date?
+    var endDate: Date?
+    var autoPick: Bool?
+    var style: ScheduleStyle?
+}
 struct ScheduleStyle: Codable {
     var color: CodableColor
     var emoji: String

@@ -22,6 +22,10 @@
 		E155FE682A959A7A0002D5EB /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155FE672A959A7A0002D5EB /* SleepManager.swift */; };
 		E16987182AA190F8009BBB34 /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16987172AA190F8009BBB34 /* UserDefault+Ext.swift */; };
 		E19A7A342AA2A456008246B7 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19A7A332AA2A456008246B7 /* Schedule.swift */; };
+		E1C480F82AA38F2400575C3F /* BackendSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480F72AA38F2400575C3F /* BackendSyncManager.swift */; };
+		E1C480FA2AA390F100575C3F /* VIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480F92AA390F100575C3F /* VIewModel.swift */; };
+		E1C480FC2AA3923C00575C3F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480FB2AA3923C00575C3F /* KeychainWrapper.swift */; };
+		E1C481002AA392D500575C3F /* String+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C480FF2AA392D500575C3F /* String+Constants.swift */; };
 		E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,10 @@
 		E191B7882A96BEA80092950C /* OnCall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnCall.entitlements; sourceTree = "<group>"; };
 		E191B78A2A96BF4C0092950C /* OnCall Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OnCall Watch App.entitlements"; sourceTree = "<group>"; };
 		E19A7A332AA2A456008246B7 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		E1C480F72AA38F2400575C3F /* BackendSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendSyncManager.swift; sourceTree = "<group>"; };
+		E1C480F92AA390F100575C3F /* VIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewModel.swift; sourceTree = "<group>"; };
+		E1C480FB2AA3923C00575C3F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		E1C480FF2AA392D500575C3F /* String+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Constants.swift"; sourceTree = "<group>"; };
 		E1C9AFE42A9A70A500A4FD76 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +172,8 @@
 		E19A7A362AA2A46B008246B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E1C480F92AA390F100575C3F /* VIewModel.swift */,
+				E1C480FF2AA392D500575C3F /* String+Constants.swift */,
 				E19A7A332AA2A456008246B7 /* Schedule.swift */,
 				E19A7A382AA2A480008246B7 /* Managers */,
 			);
@@ -183,7 +193,9 @@
 		E19A7A382AA2A480008246B7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E1C480FB2AA3923C00575C3F /* KeychainWrapper.swift */,
 				E155FE672A959A7A0002D5EB /* SleepManager.swift */,
+				E1C480F72AA38F2400575C3F /* BackendSyncManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -293,10 +305,14 @@
 				E16987182AA190F8009BBB34 /* UserDefault+Ext.swift in Sources */,
 				E1C9AFE52A9A70A500A4FD76 /* EditProfileView.swift in Sources */,
 				E155FE462A9597820002D5EB /* ContentView.swift in Sources */,
+				E1C480FA2AA390F100575C3F /* VIewModel.swift in Sources */,
 				E19A7A342AA2A456008246B7 /* Schedule.swift in Sources */,
 				E1519AAF2A9999F100AE76F8 /* ScheduleView.swift in Sources */,
+				E1C481002AA392D500575C3F /* String+Constants.swift in Sources */,
+				E1C480F82AA38F2400575C3F /* BackendSyncManager.swift in Sources */,
 				E155FE682A959A7A0002D5EB /* SleepManager.swift in Sources */,
 				E155FE442A9597820002D5EB /* OnCallApp.swift in Sources */,
+				E1C480FC2AA3923C00575C3F /* KeychainWrapper.swift in Sources */,
 				E1519AB12A999B6500AE76F8 /* Color+Ext.swift in Sources */,
 				E1519AB32A99A89400AE76F8 /* EditScheduleView.swift in Sources */,
 			);
