@@ -1,6 +1,3 @@
-"""
-vscodium is shit
-"""
 import json
 import httpx
 import os
