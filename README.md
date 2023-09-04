@@ -1,5 +1,3 @@
-# NightShift
-
 ![NightShift](https://github.com/AndreasInk/NightShift/assets/67549402/274d0eb0-2676-41f7-8ca8-5e467ad33f09)
 
 
