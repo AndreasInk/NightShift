@@ -1,4 +1,4 @@
-![NightShift](https://github.com/AndreasInk/NightShift/assets/67549402/274d0eb0-2676-41f7-8ca8-5e467ad33f09)
+![NightShift](https://github.com/AndreasInk/NightShift/assets/67549402/69a3c3e8-6abc-4434-8658-2a5cc1c01f7d)
 
 
 NightShift is an iOS app integrated with a FastAPI backend designed to improve the sleep quality of caregivers while ensuring prompt care for their dependents. The app intelligently selects which caregiver to wake up based on real-time sleep stage data. This aids in the care of elderly, sick individuals, and babies without unduly disturbing the caregiver's sleep.
