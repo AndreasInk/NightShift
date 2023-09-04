@@ -1,6 +1,7 @@
 """
 vscodium is shit
 """
+import json
 import httpx
 import os
 from fastapi import FastAPI, Depends
@@ -10,10 +11,11 @@ import sqlite3
 from datetime import datetime, timedelta
 import jwt
 from fastapi import HTTPException
+import psycopg2
 
 app = FastAPI()
 
-SECRET_KEY = "09d25e094faa6csjhdjshd822556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
+SECRET_KEY = ""
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -31,6 +33,13 @@ class CodableColor(BaseModel):
     blue: float
     green: float
 
+class SleepData(BaseModel):
+    date: int
+    bloodOxygen: float
+    heartRate: float
+    respirationRate: float
+    decibels: float
+
 # Represents the PersonCodable struct in Swift
 class PersonCodable(BaseModel):
     name: Optional[str] = None
@@ -43,13 +52,15 @@ class PersonCodable(BaseModel):
 
     # Methods for handling UIImage can be added here if necessary.
 
-# Represents the SleepData struct in Swift
-class SleepData(BaseModel):
-    date: int
-    bloodOxygen: float
-    heartRate: float
-    respirationRate: float
-    decibels: float
+
+def get_connection():
+    return psycopg2.connect(
+        host=os.environ.get("CLOUD_SQL_INSTANCE_IP"),
+        user=os.environ.get("DB_USERNAME"),
+        password=os.environ.get("DB_PASSWORD"),
+        dbname=os.environ.get("DB_NAME")
+    )
+
 
 def get_sleep_stage(heartrate: float, avg_heartrate: float, respiration_rate: float, avg_respiration_rate: float) -> str:
     if heartrate > avg_heartrate + 6 and respiration_rate > avg_respiration_rate + 3:
@@ -63,7 +74,7 @@ class User(BaseModel):
 
 # Create an SQLite database and a table
 def create_db():
-    conn = sqlite3.connect('nightshift.db')
+    conn = get_connection()
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS schedules (
@@ -96,7 +107,7 @@ def create_db():
 What 
 
 """
-def send_push_notification(user_id, course_title, is_prod):
+def send_push_notification(user_id, person_name, is_prod):
     
     key_id = os.environ.get("key_id", "")
     team_id = os.environ.get("team_id", "")
@@ -130,7 +141,7 @@ def send_push_notification(user_id, course_title, is_prod):
         {
             "timestamp": int(datetime.now().timestamp()),
             "alert": {
-                "title": f"{course_title} needs help",
+                "title": f"{person_name} needs help",
                 "body": "",
                 "sound": "default"
                 }
@@ -155,7 +166,7 @@ async def login_for_access_token(user: User):
 @app.get("/api/get_schedules/{schedule_id}")
 async def get_schedules(schedule_id: str):
     try:
-        conn = sqlite3.connect('nightshift.db')
+        conn = get_connection()
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM schedules WHERE id = ?', (schedule_id,))
         schedule_data = cursor.fetchall()
@@ -185,7 +196,7 @@ async def save_schedule(schedule: Schedule):
     schedule.endDate = schedule.endDate if schedule.endDate else None
 
     # Insert the schedule data into the SQLite database
-    conn = sqlite3.connect('nightshift.db')
+    conn = get_connection()
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO schedules (id, name, peopleOnShift, startDate, endDate, autoPick, style)
@@ -198,7 +209,7 @@ async def save_schedule(schedule: Schedule):
 
 @app.post("/api/save_profile/")
 async def save_profile(person: PersonCodable):
-    conn = sqlite3.connect('nightshift.db')
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -220,7 +231,7 @@ async def save_profile(person: PersonCodable):
 
 @app.post("/api/determine_who_to_wakeup/{schedule_id}")
 async def determine_who_to_wakeup(schedule_id: str):
-    conn = sqlite3.connect('nightshift.db')
+    conn = get_connection()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM schedules WHERE id = ?', (schedule_id,))
     schedule_data = cursor.fetchone()
@@ -257,15 +268,29 @@ def authenticate(token: str = None):
     except jwt.PyJWTError:
         raise HTTPException(status_code=401, detail="Not authenticated")
 
-@app.post("/api/save_profile/")
-async def save_profile(person: PersonCodable, token: str = Depends(authenticate)):
-    # Your save profile code here
-    print()
-
 @app.get("/api/get_profile/{user_id}")
-async def get_profile(user_id: str, token: str = Depends(authenticate)):
-    # Your get profile code here
-    print()
+async def get_profile(user_id: str):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM profiles WHERE id=?', (user_id,))
+    row = cursor.fetchone()
+    conn.close()
+
+    if row is None:
+        raise HTTPException(status_code=404, detail="Profile not found")
+
+    # Map the SQLite row to a Pydantic object
+    profile = PersonCodable(
+        userID=row[0],
+        name=row[1],
+        color=json.loads(row[2]) if row[2] else None,
+        imageData=row[3],
+        emoji=row[4],
+        pushToken=row[6],
+        sleepData=json.loads(row[7]) if row[7] else None
+    )
+
+    return profile.dict()
 
 
 
