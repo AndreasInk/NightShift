@@ -13,6 +13,7 @@ struct ScheduleView: View {
     @Query var schedules: [Schedule]
     var schedule: Schedule = Schedule(id: UUID().uuidString, name: "", startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 4), autoPick: true, style: .demo)
     @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
@@ -47,19 +48,17 @@ struct ScheduleView: View {
                     .padding(.vertical)
                     ForEach(schedules, id: \.id) { schedule in
                         ScheduleCellView(schedule: schedule)
-                        
                     }
                 }
-                
             }
             .scrollClipDisabled()
         }
         .onAppear {
             viewModel.syncWithBackend()
         }
-        
     }
 }
+
 struct ScheduleCellView: View {
     @State var expand = false
     @State var showEdit = false
@@ -143,7 +142,7 @@ struct PeopleGridView: View {
                 person.image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 55, height: 55)
+                    .frame(width: 45, height: 45)
                     .scaleEffect(0.6)
                     .clipShape(Circle())
                     .padding(3)

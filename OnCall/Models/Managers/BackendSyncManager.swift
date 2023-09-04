@@ -64,7 +64,7 @@ class BackendSyncManager {
 
     func login(username: String, password: String) async throws -> TokenResponse {
         let user = User(username: username, password: password)
-        let url = URL(string: "http://localhost:8000/token/")
+        let url = URL(string: baseURL + "/token")
         
         guard let requestUrl = url else {
             throw NetworkError.badURL

@@ -17,4 +17,5 @@ struct NightShiftConstants {
     static let password = "password"
     
     static let keychainServiceName = "com.Ai.OnCall"
+    static let appRefresh = "com.Ai.OnCall.refresh"
 }

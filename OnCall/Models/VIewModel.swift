@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BackgroundTasks
 
 class ViewModel: ObservableObject {
     typealias Constants = NightShiftConstants
@@ -28,19 +29,24 @@ class ViewModel: ObservableObject {
             if isBackendSyncOn {
                 let bearer = try await getBearer(username: username, password: keychain.string(forKey: Constants.password) ?? "")
                 if schedules.isEmpty {
-                    profile = try await backendSync.getProfile(token: bearer, userID: userID)
                     schedules = try await backendSync.getSchedules(token: bearer, scheduleID: userID)
                 } else {
                     let sleepData = try await health.querySleepData(from: Date().addingTimeInterval(-3600), to: Date())
                     profile.sleepData = sleepData
-                    try await backendSync.saveProfile(token: bearer, profile: profile)
-                    for schedule in schedules {
-                        try await backendSync.saveSchedule(token: bearer, schedule: schedule)
+                    for var schedule in schedules {
+                        if let index = schedule.peopleOnShift?.firstIndex(where: { person in
+                            person.userID == profile.userID
+                        }) {
+                            schedule.peopleOnShift?[index] = profile
+                            try await backendSync.saveSchedule(token: bearer, schedule: schedule)
+                        }
                     }
                 }
             }
+            self.scheduleAppRefresh()
         }
     }
+    
     func getBearer(username: String, password: String) async throws -> String {
         let token = keychain.string(forKey: Constants.bearer) ?? ""
         if token.isEmpty {
@@ -51,7 +57,12 @@ class ViewModel: ObservableObject {
             return token
         }
     }
+    
     func saveBearer(_ bearer: String) {
         keychain.set(bearer, forKey: Constants.bearer)
+    }
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: Constants.appRefresh)
+        try? BGTaskScheduler.shared.submit(request)
     }
 }
